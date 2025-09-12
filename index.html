@@ -12,12 +12,13 @@
 
     .hero-section {
       background-image: url('BG1.jpg');
-      background-size: cover;
+      background-size: cover;     
       background-position: center;
       background-repeat: no-repeat;
       text-align: center;
       color: white;
-      padding-bottom: 50px;
+      min-height: 600px;
+      padding: 20px 0;
     }
 
     .menu-wrapper {
@@ -42,7 +43,7 @@
     }
 
     .nav-list a:hover {
-      color:turquoise;
+      color: turquoise;
     }
 
     .image-square {
@@ -56,17 +57,66 @@
       margin: 10px 0;
     }
 
-    hr.no-line {
-      display: none;
+    /* Second Section */
+    .hero-section.second {
+      background-image: url('BG2.jpg');
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .second h2 {
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    .columns {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap; /* makes it responsive */
+    }
+
+    .column {
+      flex: 1 1 30%; /* grow, shrink, base size */
+      max-width: 30%;
+      margin: 10px;
+      color: white;
+    }
+
+    .column img {
+      width: 130px;
+      height: 130px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .column p {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    /* Media Queries */
+    @media(max-width: 900px) {
+      .column {
+        flex: 1 1 45%; /* 2 columns */
+        max-width: 45%;
+      }
+    }
+
+    @media(max-width: 600px) {
+      .column {
+        flex: 1 1 100%; /* 1 column */
+        max-width: 100%;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- First Section -->
   <div class="hero-section">
     <header class="menu-wrapper">
       <div class="logo">
-        <img src="/safarilogo.png" alt="SAFARI" style="max-height: 32px;">
+        <img src="safarilogo.png" alt="SAFARI" style="max-height: 32px;">
       </div>
       <nav>
         <ul class="nav-list">
@@ -80,11 +130,33 @@
       </nav>
     </header>
 
-    <img class="image-square" src="/square.png" width="30" height="30" alt="square">
+    <img class="image-square" src="square.png" width="30" height="30" alt="square">
 
     <div class="welcome">
       <h1>Hi! Welcome</h1>
       <h1>To AFRICA</h1>
+    </div>
+  </div>
+
+  <!-- Second Section -->
+  <div class="hero-section second">
+    <h2>Places you must visit</h2>
+
+    <div class="columns">
+      <div class="column">
+        <img src="egypt.png" alt="Place 1">
+        <p>Vestibulum ac posuere mi, ac tristique massa. Donec laoreet libero velit, eu tincidunt augue tristique lobortis.</p>
+      </div>
+
+      <div class="column">
+        <img src="congo.png" alt="Place 2">
+        <p>Integer maximus porttitor viverra. Curabitur in sapien sed augue pellentesque placerat et et massa.</p>
+      </div>
+
+      <div class="column">
+        <img src="sahara.png" alt="Place 3">
+        <p>Phasellus porta gravida ultrices. Ut ultrices, felis vitae mattis tincidunt, mauris nisl placerat enim.</p>
+      </div>
     </div>
   </div>
 
