@@ -124,49 +124,57 @@
         <div class="col-12 col-md-6">
           <div class="card p-4">
             <h2 class="text-center mb-4">Payment Details</h2>
-            <form action="order-success.html" method="POST">
+            <form id="cFORM" class="needs-validation" novalidate action="order-success.html" method="POST">
 
               <!-- Contact Info -->
               <div class="mb-3">
-                <label for="fullname" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="fullname" name="fullname" required>
+                <label for="term" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="term" name="fullname" required>
+                <div class="invalid-feedback">Please enter your full name.</div>
               </div>
 
               <div class="mb-3">
                 <label for="email" class="form-label">Email Address</label>
                 <input type="email" class="form-control" id="email" name="email" required>
+                <div class="invalid-feedback">Please enter a valid email address.</div>
               </div>
 
               <div class="mb-3">
                 <label for="phone" class="form-label">Phone Number</label>
                 <input type="tel" class="form-control" id="phone" name="phone" required>
+                <div class="invalid-feedback">Please enter your phone number.</div>
               </div>
 
               <!-- Billing Address -->
               <div class="mb-3">
                 <label for="address" class="form-label">Street Address</label>
                 <input type="text" class="form-control" id="address" name="address" required>
+                <div class="invalid-feedback">Please enter your street address.</div>
               </div>
 
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label for="city" class="form-label">City</label>
                   <input type="text" class="form-control" id="city" name="city" required>
+                  <div class="invalid-feedback">Please enter a city.</div>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="state" class="form-label">State</label>
                   <input type="text" class="form-control" id="state" name="state" required>
+                  <div class="invalid-feedback">Please enter a state.</div>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label for="zip" class="form-label">Zip Code</label>
-                  <input type="text" class="form-control" id="zip" name="zip" required>
+                  <input type="number" class="form-control" id="zip" name="zip" required>
+                  <div class="invalid-feedback">Please enter a ZIP/postal code.</div>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="country" class="form-label">Country</label>
                   <input type="text" class="form-control" id="country" name="country" required>
+                  <div class="invalid-feedback">Please enter a country.</div>
                 </div>
               </div>
 
@@ -177,6 +185,7 @@
                   <div class="form-check">
                     <input class="form-check-input" type="radio" id="credit" name="payment" value="credit" required>
                     <label class="form-check-label" for="credit">Credit Card</label>
+                    
                   </div>
                   <div class="form-check">
                     <input class="form-check-input" type="radio" id="debit" name="payment" value="debit">
@@ -185,6 +194,7 @@
                   <div class="form-check">
                     <input class="form-check-input" type="radio" id="paypal" name="payment" value="paypal">
                     <label class="form-check-label" for="paypal">PayPal</label>
+                    <div class="invalid-feedback">Please select a payment method.</div>
                   </div>
                 </div>
               </div>
@@ -193,25 +203,29 @@
               <div class="mb-3">
                 <label for="cardholder" class="form-label">Cardholder Name</label>
                 <input type="text" class="form-control" id="cardholder" name="cardholder" required>
+                <div class="invalid-feedback">Enter the name on your card.</div>
               </div>
 
               <div class="mb-3">
                 <label for="cardnum" class="form-label">Card Number</label>
-                <input type="number" class="form-control" id="cardnum" name="cardnum" required>
+                <input type="text" inputmode="numeric" pattern="\d{13,19}" class="form-control" id="cardnum" name="cardnum" placeholder="16 digits" required>
+                <div class="invalid-feedback">Enter a valid card number (13–19 digits).</div>
               </div>
 
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label for="expiry" class="form-label">Expiration Date</label>
-                  <input type="text" class="form-control" id="expiry" name="expiry" placeholder="MM/YY" required>
+                  <input type="text" class="form-control" id="expiry" name="expiry" placeholder="MM/YY" pattern="^(0[1-9]|1[0-2])\/\d{2}$" required>
+                  <div class="invalid-feedback">Use MM/YY format.</div>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="cvv" class="form-label">CVV</label>
-                  <input type="number" class="form-control" id="cvv" name="cvv" required>
+                  <input type="text" inputmode="numeric" pattern="\d{3,4}" class="form-control" id="cvv" name="cvv" placeholder="3 or 4 digits" required>
+                  <div class="invalid-feedback">Enter a 3 or 4 digit CVV.</div>
                 </div>
               </div>
 
-              <a href="order-success.html" class="btn purchase-btn">Purchase Order</a>
+              <button type="submit" class="btn purchase-btn">Purchase Order</button>
             </form>
           </div>
         </div>
@@ -247,5 +261,22 @@
     <p>© 2025 BESAFARI. All Rights Reserved.</p>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Bootstrap starter validation)
+    (() => {
+      const forms = document.querySelectorAll('.needs-validation');
+      Array.from(forms).forEach((form) => {
+        form.addEventListener('submit', (event) => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+  </script>
+  <script src="script.js"></script>
 </body>
 </html>

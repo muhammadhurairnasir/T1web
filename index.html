@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BESAFARI - BETHEME</title>
   <style>
+    :root {
+      --color-text: #ffffff;
+      --color-accent: turquoise;
+      --color-aqua: #00ffc6;
+      --color-input-bg: rgba(0,0,0,0.25);
+      --color-input-border: rgba(255,255,255,0.6);
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -16,7 +24,7 @@
       background-position: center;
       background-repeat: no-repeat;
       text-align: center;
-      color: white;
+      color: var(--color-text);
       min-height: 600px;
       padding: 20px 0;
     }
@@ -38,12 +46,12 @@
 
     .nav-list a {
       text-decoration: none;
-      color: white;
+      color: var(--color-text);
       padding: 10px;
     }
 
     .nav-list a:hover {
-      color: turquoise;
+      color: var(--color-accent);
     }
 
     .image-square {
@@ -79,7 +87,7 @@
       flex: 1 1 30%; /* grow, shrink, base size */
       max-width: 30%;
       margin: 10px;
-      color: white;
+      color: var(--color-text);
     }
 
     .column img {
@@ -94,11 +102,271 @@
       font-size: 16px;
     }
 
+    /* Third Section */
+    .hero-section.third {
+      background-image: url('BG4.jpg');
+      padding: 40px 20px;
+      text-align: center;
+      color: var(--color-text);
+    }
+
+    .third h2 {
+      font-size: 51px;
+      line-height: 51px;
+      margin-bottom: 10px;
+      font-weight: 700;
+      letter-spacing: 0px;
+    }
+
+    .third img {
+      display: block;
+      margin: 12px auto;
+      height: auto;
+    }
+
+    .third .accent {
+      width: 80px;
+      height: 6px;
+      background: var(--color-accent);
+      margin: 14px auto 20px;
+      border-radius: 3px;
+    }
+
+    /* Rating score and progress icons */
+    .third .rating-score {
+      font-size: 56px;
+      font-weight: 800;
+      color: var(--color-aqua);
+      margin: 8px 0 6px;
+      letter-spacing: 1px;
+    }
+
+    .third .average-label {
+      font-size: 14px;
+      opacity: 0.9;
+      margin-bottom: 10px;
+    }
+
+    .third .progress_icons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 8px 0 16px;
+    }
+
+    .third .progress_icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.15);
+      color: #222;
+    }
+
+    .third .progress_icon.themebg {
+      background-color: var(--color-aqua) !important;
+    }
+
+    .third .icon-star::before {
+      content: '★';
+      font-size: 18px;
+      color: #1a1a1a;
+      line-height: 1;
+    }
+
+    .third .content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      display: grid;
+      gap: 8px;
+    }
+
+    .third p {
+      line-height: 1.6;
+      font-size: 18px;
+      margin: 14px 0;
+      color: rgba(255, 255, 255, 1);
+    }
+
+    .third p.lead {
+      font-size: 20px;
+      font-weight: 700;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+    }
+
+    .third p.muted {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .third .five-words {
+      margin-top: 18px;
+      text-align: center;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    /* Fourth Section - List of Tours */
+    .hero-section.fourth {
+      background-image: url('BG5.jpg');
+      padding: 40px 20px;
+      text-align: center;
+      color: var(--color-text);
+    }
+
+    .fourth h2 {
+      font-size: 48px;
+      font-weight: 800;
+      margin: 0 0 10px 0;
+    }
+
+    .fourth .accent {
+      width: 80px;
+      height: 6px;
+      background: var(--color-accent);
+      margin: 12px auto 26px;
+      border-radius: 3px;
+    }
+
+    .tours-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .tour-card {
+      background: rgba(0,0,0,0.15);
+      padding: 16px;
+      border-radius: 8px;
+    }
+
+    .tour-number {
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--color-aqua);
+      margin-bottom: 10px;
+    }
+
+    .tour-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin: 0 0 6px 0;
+    }
+
+    .tour-date {
+      font-style: italic;
+      font-size: 14px;
+      opacity: 0.9;
+      margin-bottom: 10px;
+    }
+
+    .tour-desc {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .tour-price {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    /* Fifth Section - Contact */
+    .hero-section.fifth {
+      background-image: url('BG6.jpg');
+      padding: 40px 20px 60px 20px;
+      text-align: center;
+      color: var(--color-text);
+    }
+
+    .fifth h2 {
+      font-size: 48px;
+      font-weight: 800;
+      margin: 0 0 14px 0;
+    }
+
+    .fifth .accent {
+      width: 80px;
+      height: 6px;
+      background: var(--color-accent);
+      margin: 10px auto 24px;
+      border-radius: 3px;
+    }
+
+    .contact-intro {
+      max-width: 700px;
+      margin: 0 auto 16px auto;
+      opacity: 0.9;
+    }
+
+    .contact-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      max-width: 700px;
+      margin: 0 auto 10px auto;
+    }
+
+    .contact-input, .contact-textarea {
+      width: 90%;
+      padding: 14px 16px;
+      border-radius: 4px;
+      border: 1px solid var(--color-input-border);
+      background: var(--color-input-bg);
+      color: var(--color-text);
+      outline: none;
+    }
+
+    .contact-textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .contact-btn {
+      background: var(--color-aqua);
+      color: #063b35;
+      border: none;
+      padding: 14px 22px;
+      font-weight: 800;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .contact-actions {
+      margin-top: 14px;
+    }
+
+    .contact-copy {
+      margin-top: 18px;
+      font-size: 12px;
+      opacity: 0.85;
+    }
+
     /* Media Queries */
+    @media(max-width: 1100px) {
+      .tours-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     @media(max-width: 900px) {
       .column {
         flex: 1 1 45%; /* 2 columns */
         max-width: 45%;
+      }
+      .contact-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width: 700px) {
+      .tours-grid {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -160,5 +428,90 @@
     </div>
   </div>
 
+  <!-- Third Section -->
+  <div class="hero-section third">
+    <div class="content">
+      <h2>WILDLIFE EXPERIENCE</h2>
+      <div class="accent"></div>
+      <div class="rating-score">08/10</div>
+      <div class="average-label">Average rating</div>
+      <div class="progress_icons" data-active="8" data-color="#00ffc6">
+        <span class="progress_icon themebg"><i class="icon-star"></i></span>
+        <span class="progress_icon themebg"><i class="icon-star"></i></span>
+        <span class="progress_icon themebg"><i class="icon-star"></i></span>
+        <span class="progress_icon themebg"><i class="icon-star"></i></span>
+        <span class="progress_icon themebg"><i class="icon-star"></i></span>
+        <span class="progress_icon themebg"><i class="icon-star"></i></span>
+        <span class="progress_icon themebg"><i class="icon-star"></i></span>
+        <span class="progress_icon themebg"><i class="icon-star"></i></span>
+        <span class="progress_icon"><i class="icon-star"></i></span>
+        <span class="progress_icon"><i class="icon-star"></i></span>
+      </div>
+      <p class="lead">Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.</p>
+      <p class="muted">Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo.</p>
+      <div class="five-words">Nullam ac urna eu felis.</div>
+    </div>
+  </div>
+
+  <!-- Fourth Section -->
+  <div class="hero-section fourth">
+    <h2>LIST OF TOURS</h2>
+    <div class="accent"></div>
+    <div class="tours-grid">
+      <div class="tour-card">
+        <div class="tour-number">01</div>
+        <div class="tour-title">SEM ANTE</div>
+        <div class="tour-date">12–23 May 2015</div>
+        <div class="tour-desc">Aliquam erat volutpat. Phasellus tempus finibus dignissim. Maecenas dictum ipsum laoreet ante euismod pulvinar. Fusce ante sem, rutrum non felis tristique amet.</div>
+        <div class="tour-price">$ 2199</div>
+      </div>
+      <div class="tour-card">
+        <div class="tour-number">02</div>
+        <div class="tour-title">DICTUM IPSUM</div>
+        <div class="tour-date">14–28 May 2015</div>
+        <div class="tour-desc">Aliquam erat volutpat. Phasellus tempus finibus dignissim. Maecenas dictum ipsum laoreet ante euismod pulvinar. Fusce ante sem, rutrum non felis tristique amet.</div>
+        <div class="tour-price">$ 1899</div>
+      </div>
+      <div class="tour-card">
+        <div class="tour-number">03</div>
+        <div class="tour-title">FELIS TRISTIQUE</div>
+        <div class="tour-date">19–26 May 2015</div>
+        <div class="tour-desc">Aliquam erat volutpat. Phasellus tempus finibus dignissim. Maecenas dictum ipsum laoreet ante euismod pulvinar. Fusce ante sem, rutrum non felis tristique amet.</div>
+        <div class="tour-price">$ 2499</div>
+      </div>
+      <div class="tour-card">
+        <div class="tour-number">04</div>
+        <div class="tour-title">ANTE DICTUM</div>
+        <div class="tour-date">09–20 May 2015</div>
+        <div class="tour-desc">Aliquam erat volutpat. Phasellus tempus finibus dignissim. Maecenas dictum ipsum laoreet ante euismod pulvinar. Fusce ante sem, rutrum non felis tristique amet.</div>
+        <div class="tour-price">$ 2199</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fifth Section - Contact -->
+  <div class="hero-section fifth">
+    <h2>CONTACT US</h2>
+    <div class="accent"></div>
+    <p class="contact-intro">Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti.</p>
+
+    <div class="contact-row">
+      <input class="contact-input" type="text" placeholder="Your name">
+      <input class="contact-input" type="email" placeholder="Your e-mail">
+    </div>
+
+    <div class="contact-row" style="grid-template-columns: 1fr; max-width: 700px;">
+      <input class="contact-input" type="text" placeholder="Subject">
+    </div>
+
+    <div class="contact-row" style="grid-template-columns: 1fr; max-width: 700px;">
+      <textarea class="contact-textarea" placeholder="Message"></textarea>
+    </div>
+
+    <div class="contact-actions">
+      <button class="contact-btn">SEND A MESSAGE</button>
+      <div class="contact-copy">© 2016 BeSafari – BeTheme. All Rights Reserved. Muffin group</div>
+    </div>
+  </div>
 </body>
 </html>
