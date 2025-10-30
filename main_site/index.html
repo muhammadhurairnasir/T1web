@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BESAFARI - BETHEME</title>
   <style>
+    :root {
+      --color-text: #ffffff;
+      --color-accent: turquoise;
+      --color-aqua: #00ffc6;
+      --color-input-bg: rgba(0,0,0,0.25);
+      --color-input-border: rgba(255,255,255,0.6);
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -13,20 +20,16 @@
 
     .hero-section {
       background-image: url('BG1.jpg');
-      background-size: cover;
+      background-size: cover;     
       background-position: center;
       background-repeat: no-repeat;
       text-align: center;
-      color: #ffffff;
+      color: var(--color-text);
       min-height: 600px;
-      padding: 120px 20px 0;
+      padding: 20px 0;
     }
 
     .menu-wrapper {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 95%;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -43,18 +46,12 @@
 
     .nav-list a {
       text-decoration: none;
-      color: #ffffff;
+      color: var(--color-text);
       padding: 10px;
     }
 
     .nav-list a:hover {
-      text-decoration: underline;
-      color: turquoise;
-      padding: 10px;
-    }
-
-    .nav-list a:hover {
-      color: turquoise;
+      color: var(--color-accent);
     }
 
     .image-square {
@@ -68,25 +65,10 @@
       margin: 10px 0;
     }
 
-    .scroll-arrow {
-      font-size: 36px;
-      color: #a39191;
-      /* aqua accent */
-      cursor: pointer;
-      margin-top: 40px;
-      transition: transform 0.3s ease, color 0.3s ease;
-    }
-
-    .scroll-arrow:hover {
-      transform: translateY(6px);
-      color: turquoise;
-    }
-
-
     /* Second Section */
     .hero-section.second {
       background-image: url('BG2.jpg');
-      padding: 40px 60px;
+      padding: 40px 20px;
       text-align: center;
     }
 
@@ -95,24 +77,17 @@
       margin-bottom: 30px;
     }
 
-    h2.main-heading {
-      font-size: 50px
-    }
-
     .columns {
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      max-width: 1100px;
-      margin: 0 auto;
+      justify-content: space-around;
+      flex-wrap: wrap; /* makes it responsive */
     }
 
     .column {
-      flex: 1 1 28%;
-      max-width: 28%;
-      margin: 10px 0;
-      color: #ffffff;
+      flex: 1 1 30%; /* grow, shrink, base size */
+      max-width: 30%;
+      margin: 10px;
+      color: var(--color-text);
     }
 
     .column img {
@@ -127,13 +102,12 @@
       font-size: 16px;
     }
 
-
     /* Third Section */
     .hero-section.third {
       background-image: url('BG4.jpg');
       padding: 40px 20px;
       text-align: center;
-      color: #ffffff;
+      color: var(--color-text);
     }
 
     .third h2 {
@@ -153,7 +127,7 @@
     .third .accent {
       width: 80px;
       height: 6px;
-      background: turquoise;
+      background: var(--color-accent);
       margin: 14px auto 20px;
       border-radius: 3px;
     }
@@ -162,7 +136,7 @@
     .third .rating-score {
       font-size: 56px;
       font-weight: 800;
-      color: #00ffc6;
+      color: var(--color-aqua);
       margin: 8px 0 6px;
       letter-spacing: 1px;
     }
@@ -187,12 +161,12 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255,255,255,0.15);
       color: #222;
     }
 
     .third .progress_icon.themebg {
-      background-color: #00ffc6 !important;
+      background-color: var(--color-aqua) !important;
     }
 
     .third .icon-star::before {
@@ -220,7 +194,7 @@
     .third p.lead {
       font-size: 20px;
       font-weight: 700;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+      text-shadow: 0 2px 8px rgba(0,0,0,0.35);
     }
 
     .third p.muted {
@@ -239,7 +213,7 @@
       background-image: url('BG5.jpg');
       padding: 40px 20px;
       text-align: center;
-      color: #ffffff;
+      color: var(--color-text);
     }
 
     .fourth h2 {
@@ -251,7 +225,7 @@
     .fourth .accent {
       width: 80px;
       height: 6px;
-      background: turquoise;
+      background: var(--color-accent);
       margin: 12px auto 26px;
       border-radius: 3px;
     }
@@ -266,7 +240,7 @@
     }
 
     .tour-card {
-      background: rgba(0, 0, 0, 0.15);
+      background: rgba(0,0,0,0.15);
       padding: 16px;
       border-radius: 8px;
     }
@@ -274,7 +248,7 @@
     .tour-number {
       font-size: 40px;
       font-weight: 800;
-      color: #00ffc6;
+      color: var(--color-aqua);
       margin-bottom: 10px;
     }
 
@@ -307,7 +281,7 @@
       background-image: url('BG6.jpg');
       padding: 40px 20px 60px 20px;
       text-align: center;
-      color: #ffffff;
+      color: var(--color-text);
     }
 
     .fifth h2 {
@@ -319,7 +293,7 @@
     .fifth .accent {
       width: 80px;
       height: 6px;
-      background: turquoise;
+      background: var(--color-accent);
       margin: 10px auto 24px;
       border-radius: 3px;
     }
@@ -338,20 +312,14 @@
       margin: 0 auto 10px auto;
     }
 
-    /* ✅ Make all inputs and textarea full width and consistent */
-    .contact-input,
-    .contact-textarea {
-      width: 100%;
-      /* full width inside the grid */
-      box-sizing: border-box;
-      /* prevents padding from affecting size */
+    .contact-input, .contact-textarea {
+      width: 90%;
       padding: 14px 16px;
       border-radius: 4px;
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      background: rgba(0, 0, 0, 0.25);
-      color: #ffffff;
+      border: 1px solid var(--color-input-border);
+      background: var(--color-input-bg);
+      color: var(--color-text);
       outline: none;
-      font-size: 16px;
     }
 
     .contact-textarea {
@@ -359,13 +327,8 @@
       resize: vertical;
     }
 
-    /* ✅ Make single-column rows still match perfectly */
-    .contact-row.full {
-      grid-template-columns: 1fr;
-    }
-
     .contact-btn {
-      background: #00ffc6;
+      background: var(--color-aqua);
       color: #063b35;
       border: none;
       padding: 14px 22px;
@@ -384,7 +347,6 @@
       opacity: 0.85;
     }
 
-
     /* Media Queries */
     @media(max-width: 1100px) {
       .tours-grid {
@@ -394,10 +356,9 @@
 
     @media(max-width: 900px) {
       .column {
-        flex: 1 1 45%;
+        flex: 1 1 45%; /* 2 columns */
         max-width: 45%;
       }
-
       .contact-row {
         grid-template-columns: 1fr;
       }
@@ -411,18 +372,16 @@
 
     @media(max-width: 600px) {
       .column {
-        flex: 1 1 100%;
+        flex: 1 1 100%; /* 1 column */
         max-width: 100%;
       }
     }
   </style>
-
 </head>
-
 <body>
 
   <!-- First Section -->
-  <div class="hero-section" id="section1">
+  <div class="hero-section">
     <header class="menu-wrapper">
       <div class="logo">
         <img src="safarilogo.png" alt="SAFARI" style="max-height: 32px;">
@@ -434,7 +393,7 @@
           <li><a href="wildlife.html">WILDLIFE</a></li>
           <li><a href="#">TOURS</a></li>
           <li><a href="#">CONTACT</a></li>
-          <li><a href="checkout.html">BUY NOW</a></li>
+          <li><a href="checkout.html">BUY NOW</a></li> <!-- ✅ Updated -->
         </ul>
       </nav>
     </header>
@@ -445,69 +404,57 @@
       <h1>Hi! Welcome</h1>
       <h1>To AFRICA</h1>
     </div>
-    <div class="scroll-arrow" onclick="scrollToSection('section2')">&#x25BC;</div>
   </div>
 
   <!-- Second Section -->
-  <div class="hero-section second" id="section2">
-    <h2 class="main-heading">PLACES YOU MUST GO</h2>
+  <div class="hero-section second">
+    <h2>Places you must visit</h2>
 
     <div class="columns">
       <div class="column">
         <img src="egypt.png" alt="Place 1">
-        <h2>EGYPT</h2>
-        <p>Vestibulum ac posuere mi, ac tristique massa. Donec laoreet libero velit, eu tincidunt augue tristique
-          lobortis. Pellentesque eget commodo nisi, vel massa nunc.</p>
+        <p>Vestibulum ac posuere mi, ac tristique massa. Donec laoreet libero velit, eu tincidunt augue tristique lobortis.</p>
       </div>
 
       <div class="column">
         <img src="congo.png" alt="Place 2">
-        <h2>CONGO BASIN</h2>
-        <p>Integer maximus porttitor viverra. Curabitur in sapien sed augue pellentesque placerat et et massa. Nulla
-          quis egestas felis, maximus pulvinar massa massa nunc.</p>
+        <p>Integer maximus porttitor viverra. Curabitur in sapien sed augue pellentesque placerat et et massa.</p>
       </div>
 
       <div class="column">
         <img src="sahara.png" alt="Place 3">
-        <h2>SAHARA</h2>
-        <p>Phasellus porta gravida ultrices. Ut ultrices, felis vitae mattis tincidunt, mauris nisl placerat enim, ut
-          facilisis lacus ligula eget ante. Pellentesque metus.</p>
+        <p>Phasellus porta gravida ultrices. Ut ultrices, felis vitae mattis tincidunt, mauris nisl placerat enim.</p>
       </div>
     </div>
-    <div class="scroll-arrow" onclick="scrollToSection('section3')">&#x25BC;</div>
   </div>
 
   <!-- Third Section -->
-  <div class="hero-section third" id="section3">
+  <div class="hero-section third">
     <div class="content">
       <h2>WILDLIFE EXPERIENCE</h2>
       <div class="accent"></div>
       <div class="rating-score">08/10</div>
       <div class="average-label">Average rating</div>
       <div class="progress_icons" data-active="8" data-color="#00ffc6">
-        <div class="progress_icon themebg"><i class="icon-star"></i></div>
-        <div class="progress_icon themebg"><i class="icon-star"></i></div>
-        <div class="progress_icon themebg"><i class="icon-star"></i></div>
-        <div class="progress_icon themebg"><i class="icon-star"></i></div>
-        <div class="progress_icon themebg"><i class="icon-star"></i></div>
-        <div class="progress_icon themebg"><i class="icon-star"></i></div>
-        <div class="progress_icon themebg"><i class="icon-star"></i></div>
-        <div class="progress_icon themebg"><i class="icon-star"></i></div>
-        <div class="progress_icon"><i class="icon-star"></i></div>
-        <div class="progress_icon"><i class="icon-star"></i></div>
+        <span class="progress_icon themebg"><i class="icon-star"></i></span>
+        <span class="progress_icon themebg"><i class="icon-star"></i></span>
+        <span class="progress_icon themebg"><i class="icon-star"></i></span>
+        <span class="progress_icon themebg"><i class="icon-star"></i></span>
+        <span class="progress_icon themebg"><i class="icon-star"></i></span>
+        <span class="progress_icon themebg"><i class="icon-star"></i></span>
+        <span class="progress_icon themebg"><i class="icon-star"></i></span>
+        <span class="progress_icon themebg"><i class="icon-star"></i></span>
+        <span class="progress_icon"><i class="icon-star"></i></span>
+        <span class="progress_icon"><i class="icon-star"></i></span>
       </div>
-      <p class="lead">Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh
-        id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.</p>
-      <p class="muted">Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor
-        eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris
-        in erat justo.</p>
+      <p class="lead">Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.</p>
+      <p class="muted">Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo.</p>
       <div class="five-words">Nullam ac urna eu felis.</div>
     </div>
-    <div class="scroll-arrow" onclick="scrollToSection('section4')">&#x25BC;</div>
   </div>
 
   <!-- Fourth Section -->
-  <div class="hero-section fourth" id="section4">
+  <div class="hero-section fourth">
     <h2>LIST OF TOURS</h2>
     <div class="accent"></div>
     <div class="tours-grid">
@@ -515,40 +462,35 @@
         <div class="tour-number">01</div>
         <div class="tour-title">SEM ANTE</div>
         <div class="tour-date">12–23 May 2015</div>
-        <div class="tour-desc">Aliquam erat volutpat. Phasellus tempus finibus dignissim. Maecenas dictum ipsum laoreet
-          ante euismod pulvinar. Fusce ante sem, rutrum non felis tristique amet.</div>
+        <div class="tour-desc">Aliquam erat volutpat. Phasellus tempus finibus dignissim. Maecenas dictum ipsum laoreet ante euismod pulvinar. Fusce ante sem, rutrum non felis tristique amet.</div>
         <div class="tour-price">$ 2199</div>
       </div>
       <div class="tour-card">
         <div class="tour-number">02</div>
         <div class="tour-title">DICTUM IPSUM</div>
         <div class="tour-date">14–28 May 2015</div>
-        <div class="tour-desc">Aliquam erat volutpat. Phasellus tempus finibus dignissim. Maecenas dictum ipsum laoreet
-          ante euismod pulvinar. Fusce ante sem, rutrum non felis tristique amet.</div>
+        <div class="tour-desc">Aliquam erat volutpat. Phasellus tempus finibus dignissim. Maecenas dictum ipsum laoreet ante euismod pulvinar. Fusce ante sem, rutrum non felis tristique amet.</div>
         <div class="tour-price">$ 1899</div>
       </div>
       <div class="tour-card">
         <div class="tour-number">03</div>
         <div class="tour-title">FELIS TRISTIQUE</div>
         <div class="tour-date">19–26 May 2015</div>
-        <div class="tour-desc">Aliquam erat volutpat. Phasellus tempus finibus dignissim. Maecenas dictum ipsum laoreet
-          ante euismod pulvinar. Fusce ante sem, rutrum non felis tristique amet.</div>
+        <div class="tour-desc">Aliquam erat volutpat. Phasellus tempus finibus dignissim. Maecenas dictum ipsum laoreet ante euismod pulvinar. Fusce ante sem, rutrum non felis tristique amet.</div>
         <div class="tour-price">$ 2499</div>
       </div>
       <div class="tour-card">
         <div class="tour-number">04</div>
         <div class="tour-title">ANTE DICTUM</div>
         <div class="tour-date">09–20 May 2015</div>
-        <div class="tour-desc">Aliquam erat volutpat. Phasellus tempus finibus dignissim. Maecenas dictum ipsum laoreet
-          ante euismod pulvinar. Fusce ante sem, rutrum non felis tristique amet.</div>
+        <div class="tour-desc">Aliquam erat volutpat. Phasellus tempus finibus dignissim. Maecenas dictum ipsum laoreet ante euismod pulvinar. Fusce ante sem, rutrum non felis tristique amet.</div>
         <div class="tour-price">$ 2199</div>
       </div>
     </div>
-    <div class="scroll-arrow" onclick="scrollToSection('section5')">&#x25BC;</div>
   </div>
 
   <!-- Fifth Section - Contact -->
-  <div class="hero-section fifth" id="section5">
+  <div class="hero-section fifth">
     <h2>CONTACT US</h2>
     <div class="accent"></div>
     <p class="contact-intro">Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti.</p>
@@ -571,13 +513,5 @@
       <div class="contact-copy">© 2016 BeSafari – BeTheme. All Rights Reserved. Muffin group</div>
     </div>
   </div>
-  <script>
-    function scrollToSection(id) {
-      const nextSection = document.getElementById(id);
-      if (nextSection) {
-        nextSection.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  </script>
 </body>
 </html>

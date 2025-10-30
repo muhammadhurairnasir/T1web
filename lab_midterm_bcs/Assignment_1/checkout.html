@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,30 +11,57 @@
 
   <style>
     /* Basic page setup */
-    body { font-family: Arial, sans-serif; margin: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
 
     /* ===== HEADER ===== */
     .hero-section {
-      background: url('BG1.jpg') center/cover no-repeat;
-      color: white;
+      background-image: url('BG1.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       text-align: center;
-      padding: 30px 0;
+      color: #ffffff;
+      min-height: 600px;
+      padding: 120px 20px 0;
+    }
+
+    .menu-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 95%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
     }
 
     .nav-list {
       list-style: none;
       display: flex;
-      justify-content: center;
-      gap: 15px;
+      gap: 20px;
+      margin: 0;
       padding: 0;
     }
 
     .nav-list a {
-      color: white;
       text-decoration: none;
+      color: #ffffff;
+      padding: 10px;
     }
 
-    .nav-list a:hover { color: turquoise; }
+    .nav-list a:hover {
+      text-decoration: underline;
+      color: turquoise;
+      padding: 10px;
+    }
+
+    .nav-list a:hover {
+      color: turquoise;
+    }
 
     /* Progress bar steps */
     .progress-steps {
@@ -69,13 +97,15 @@
     }
 
     /* Input styling */
-    .form-control, .form-select {
+    .form-control,
+    .form-select {
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.4);
       color: white;
     }
 
-    .form-control:focus, .form-select:focus {
+    .form-control:focus,
+    .form-select:focus {
       border-color: turquoise;
       background: rgba(255, 255, 255, 0.2);
       box-shadow: none;
@@ -93,7 +123,9 @@
       border-radius: 5px;
     }
 
-    .purchase-btn:hover { background: #009999; }
+    .purchase-btn:hover {
+      background: #009999;
+    }
 
     /* Footer */
     .footer {
@@ -105,23 +137,32 @@
 
     /* Keeps order summary fixed on large screens */
     @media (min-width: 992px) {
-      .order-summary { position: sticky; top: 20px; }
+      .order-summary {
+        position: sticky;
+        top: 20px;
+      }
     }
   </style>
 </head>
+
 <body>
 
-  <!-- ===== HEADER ===== -->
-  <div class="hero-section">
-    <header>
-      <ul class="nav-list">
-        <li><a href="index.html">START</a></li>
-        <li><a href="#">MUST VISIT</a></li>
-        <li><a href="#">WILDLIFE</a></li>
-        <li><a href="#">TOURS</a></li>
-        <li><a href="#">CONTACT</a></li>
-        <li><a href="checkout.html">BUY NOW</a></li>
-      </ul>
+  <!-- First Section -->
+  <div class="hero-section" id="section1">
+    <header class="menu-wrapper">
+      <div class="logo">
+        <img src="safarilogo.png" alt="SAFARI" style="max-height: 32px;">
+      </div>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="#">START</a></li>
+          <li><a href="#">MUST VISIT</a></li>
+          <li><a href="wildlife.html">WILDLIFE</a></li>
+          <li><a href="#">TOURS</a></li>
+          <li><a href="#">CONTACT</a></li>
+          <li><a href="checkout.html">BUY NOW</a></li>
+        </ul>
+      </nav>
     </header>
 
     <h1>Checkout</h1>
@@ -145,7 +186,7 @@
 
             <form class="needs-validation" novalidate>
               <div class="row g-3">
-                
+
                 <!-- Personal details -->
                 <div class="col-md-6">
                   <label class="form-label">Full Name</label>
@@ -279,7 +320,7 @@
     // ===== SIMPLE VALIDATION =====
     const form = document.querySelector('form');
 
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', function (e) {
       // Stop form from submitting if fields are invalid
       if (!form.checkValidity()) {
         e.preventDefault();
@@ -301,9 +342,10 @@
     // ===== ENABLE BUTTON WHEN TERMS CHECKED =====
     const terms = document.getElementById('terms');
     const placeBtn = document.getElementById('placeBtn');
-    terms.addEventListener('change', function() {
+    terms.addEventListener('change', function () {
       placeBtn.disabled = !this.checked;
     });
   </script>
 </body>
+
 </html>

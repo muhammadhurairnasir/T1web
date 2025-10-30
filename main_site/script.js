@@ -1,3 +1,6 @@
+// Global variable to store wildlife data
+let wildlifeData = [];
+
 // Fetch & display wildlife (initial load only)
 function displayWildlife() {
   $.ajax({
@@ -6,7 +9,7 @@ function displayWildlife() {
     dataType: "json",
     cache: false,
     success: function (data) {
-      const wildlifeData = data.slice(0, 20); // load first 20 items
+      wildlifeData = data.slice(0, 20); // load first 20 items
       handleResponse(wildlifeData);
     },
     error: function (error) {
@@ -49,19 +52,20 @@ function handleResponse(data) {
   });
 }
 
-// Delete wildlife (via API only)
+// Delete wildlife (local only + fake API call)
 function deleteWildlife() {
   let wildlifeId = $(this).attr("data-id");
 
+  // Update locally
+  wildlifeData = wildlifeData.filter((item) => item.id != wildlifeId);
+  handleResponse(wildlifeData);
+
+  // Fake API request (not persisted)
   $.ajax({
     url: "https://jsonplaceholder.typicode.com/posts/" + wildlifeId,
     method: "DELETE",
     success: function () {
       console.log("Deleted (simulated on API)");
-      displayWildlife(); // Refresh list after delete
-    },
-    error: function (error) {
-      console.error("Error deleting wildlife:", error);
     },
   });
 }
@@ -74,7 +78,16 @@ function handleFormSubmission(event) {
   var body = $("#content").val();
 
   if (wildlifeId) {
-    // Update existing item
+    // Update local
+    const index = wildlifeData.findIndex((item) => item.id == wildlifeId);
+    if (index !== -1) {
+      wildlifeData[index].title = title;
+      wildlifeData[index].body = body;
+    }
+    handleResponse(wildlifeData);
+    clearForm();
+
+    // Fake API update
     $.ajax({
       url: "https://jsonplaceholder.typicode.com/posts/" + wildlifeId,
       method: "PUT",
@@ -82,27 +95,26 @@ function handleFormSubmission(event) {
       contentType: "application/json",
       success: function () {
         console.log("Updated (simulated on API)");
-        displayWildlife();
-        clearForm();
-      },
-      error: function (error) {
-        console.error("Error updating:", error);
       },
     });
   } else {
-    // Create new item
+    // Create new locally
+    const newId = wildlifeData.length
+      ? Math.max(...wildlifeData.map((item) => item.id)) + 1
+      : 101;
+    const newItem = { id: newId, title, body, userId: 1 };
+    wildlifeData.unshift(newItem);
+    handleResponse(wildlifeData);
+    clearForm();
+
+    // Fake API create
     $.ajax({
       url: "https://jsonplaceholder.typicode.com/posts",
       method: "POST",
-      data: JSON.stringify({ title, body, userId: 1 }),
+      data: JSON.stringify(newItem),
       contentType: "application/json",
       success: function () {
         console.log("Created (simulated on API)");
-        displayWildlife();
-        clearForm();
-      },
-      error: function (error) {
-        console.error("Error creating:", error);
       },
     });
   }
@@ -112,22 +124,14 @@ function handleFormSubmission(event) {
 function editBtnClicked(event) {
   event.preventDefault();
   let wildlifeId = $(this).attr("data-id");
-
-  $.ajax({
-    url: "https://jsonplaceholder.typicode.com/posts/" + wildlifeId,
-    method: "GET",
-    dataType: "json",
-    success: function (data) {
-      $("#clearBtn").show();
-      $("#title").val(data.title);
-      $("#content").val(data.body);
-      $("#createBtn").html("Update");
-      $("#createBtn").attr("data-id", data.id);
-    },
-    error: function (error) {
-      console.error("Error loading data:", error);
-    },
-  });
+  const item = wildlifeData.find((w) => w.id == wildlifeId);
+  if (item) {
+    $("#clearBtn").show();
+    $("#title").val(item.title);
+    $("#content").val(item.body);
+    $("#createBtn").html("Update");
+    $("#createBtn").attr("data-id", item.id);
+  }
 }
 
 // Clear form
@@ -151,6 +155,8 @@ function editContent(id) {
 
 function saveTitle(id) {
   const newTitle = $(`#title-form-${id} input`).val();
+  const item = wildlifeData.find((w) => w.id == id);
+  if (item) item.title = newTitle;
 
   $(`#title-${id}`).text(newTitle).show();
   $(`#title-form-${id}`).hide();
@@ -158,16 +164,18 @@ function saveTitle(id) {
   $.ajax({
     url: `https://jsonplaceholder.typicode.com/posts/${id}`,
     method: "PUT",
-    data: JSON.stringify({ id, title: newTitle, userId: 1 }),
+    data: JSON.stringify({ id, title: newTitle, body: item?.body, userId: 1 }),
     contentType: "application/json",
     success: function () {
-      console.log("Title updated (simulated on API)");
+      console.log("Title updated (simulated)");
     },
   });
 }
 
 function saveContent(id) {
   const newContent = $(`#content-form-${id} input`).val();
+  const item = wildlifeData.find((w) => w.id == id);
+  if (item) item.body = newContent;
 
   $(`#content-${id}`).text(newContent).show();
   $(`#content-form-${id}`).hide();
@@ -175,10 +183,10 @@ function saveContent(id) {
   $.ajax({
     url: `https://jsonplaceholder.typicode.com/posts/${id}`,
     method: "PUT",
-    data: JSON.stringify({ id, body: newContent, userId: 1 }),
+    data: JSON.stringify({ id, title: item?.title, body: newContent, userId: 1 }),
     contentType: "application/json",
     success: function () {
-      console.log("Content updated (simulated on API)");
+      console.log("Content updated (simulated)");
     },
   });
 }
@@ -193,7 +201,7 @@ function handleKeyPress(event, id, type) {
   }
 }
 
-// Initialize everything
+// Init
 $(document).ready(function () {
   displayWildlife();
   $(document).on("click", ".btn-del", deleteWildlife);
