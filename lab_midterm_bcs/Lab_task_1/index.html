@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BESAFARI - BETHEME</title>
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -42,20 +46,28 @@
     }
 
     .nav-list a {
-      text-decoration: none;
-      color: #ffffff;
-      padding: 10px;
-    }
+  text-decoration: none;
+  color: #ffffff;
+  padding: 10px 0;
+  position: relative;
+}
 
-    .nav-list a:hover {
-      text-decoration: underline;
-      color: turquoise;
-      padding: 10px;
-    }
+.nav-list a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: turquoise;
+  transition: width 0.3s;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
 
-    .nav-list a:hover {
-      color: turquoise;
-    }
+.nav-list a:hover::after {
+  width: 100%;
+}
+
 
     .image-square {
       display: block;
@@ -429,13 +441,14 @@
       </div>
       <nav>
         <ul class="nav-list">
-          <li><a href="#">START</a></li>
-          <li><a href="#">MUST VISIT</a></li>
-          <li><a href="wildlife.html">WILDLIFE</a></li>
-          <li><a href="#">TOURS</a></li>
-          <li><a href="#">CONTACT</a></li>
+          <li><a href="#section1">START</a></li>
+          <li><a href="#section2">MUST VISIT</a></li>
+          <li><a href="#section3">WILDLIFE</a></li>
+          <li><a href="#section4">TOURS</a></li>
+          <li><a href="#section5">CONTACT</a></li>
           <li><a href="checkout.html">BUY NOW</a></li>
         </ul>
+
       </nav>
     </header>
 
@@ -580,4 +593,5 @@
     }
   </script>
 </body>
+
 </html>
