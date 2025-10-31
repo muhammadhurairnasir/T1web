@@ -349,14 +349,10 @@
       max-width: 700px;
       margin: 0 auto 10px auto;
     }
-
-    /* ✅ Make all inputs and textarea full width and consistent */
     .contact-input,
     .contact-textarea {
       width: 100%;
-      /* full width inside the grid */
       box-sizing: border-box;
-      /* prevents padding from affecting size */
       padding: 14px 16px;
       border-radius: 4px;
       border: 1px solid rgba(255, 255, 255, 0.6);
@@ -371,7 +367,6 @@
       resize: vertical;
     }
 
-    /* ✅ Make single-column rows still match perfectly */
     .contact-row.full {
       grid-template-columns: 1fr;
     }
@@ -559,6 +554,7 @@
     </div>
     <div class="scroll-arrow" onclick="scrollToSection('section5')">&#x25BC;</div>
   </div>
+  
 
   <!-- Fifth Section - Contact -->
   <div class="hero-section fifth" id="section5">
