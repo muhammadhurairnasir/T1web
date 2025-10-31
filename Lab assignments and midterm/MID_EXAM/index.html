@@ -15,6 +15,11 @@
       font-family: Arial, sans-serif;
     }
 
+    html,
+    body {
+      overflow-x: hidden;
+    }
+
     .hero-section {
       background-image: url('assets/BG1.jpg');
       background-size: cover;
@@ -653,10 +658,11 @@
     <div class="contact-row" style="grid-template-columns: 1fr; max-width: 700px;">
       <textarea class="contact-textarea" placeholder="Message"></textarea>
     </div>
-
+    <button class="contact-btn">SEND A MESSAGE</button>
+    <div class="scroll-arrow" onclick="scrollToSection('section6')">&#x25BC;</div>
     <div class="contact-actions">
-      <button class="contact-btn">SEND A MESSAGE</button>
-      <div class="contact-copy">© 2016 BeSafari – BeTheme. All Rights Reserved. Muffin group</div>
+
+
     </div>
   </div>
   <!-- Testimonials Section -->
@@ -706,6 +712,7 @@
     </div>
 
     <button class="view-more-btn" onclick="toggleTestimonials()">View More</button>
+    <div class="contact-copy">© 2016 BeSafari – BeTheme. All Rights Reserved. Muffin group</div>
   </div>
   <script>
     function scrollToSection(id) {
@@ -719,6 +726,7 @@
     function toggleTestimonials() {
       var extraCards = document.getElementsByClassName("hidden");
       var button = document.querySelector(".view-more-btn");
+      //If View more button is showing
       if (showAll == false) {
         for (var i = 0; i < extraCards.length; i++) {
           extraCards[i].style.display = "block";
@@ -734,6 +742,7 @@
         showAll = true;
       }
       else {
+        //If View more button is showing
         // Disappear smoothly
         for (var i = 0; i < extraCards.length; i++) {
           extraCards[i].style.opacity = "0";
@@ -749,4 +758,5 @@
     }
   </script>
 </body>
+
 </html>
