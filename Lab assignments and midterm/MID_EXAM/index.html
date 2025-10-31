@@ -714,30 +714,39 @@
         nextSection.scrollIntoView({ behavior: "smooth" });
       }
     }
-
-
+    //Reviews View logic here.
     var showAll = false;
-
     function toggleTestimonials() {
       var extraCards = document.getElementsByClassName("hidden");
       var button = document.querySelector(".view-more-btn");
-
       if (showAll == false) {
         for (var i = 0; i < extraCards.length; i++) {
           extraCards[i].style.display = "block";
+          extraCards[i].style.opacity = "0";
+          // Delay to let CSS apply before appearing
+          setTimeout(function (card) {
+            card.style.opacity = "1";
+          }, 400, extraCards[i]);
         }
-        button.innerHTML = "View Less";
+        setTimeout(function () {
+          button.innerHTML = "View Less";
+        }, 300);
         showAll = true;
       }
       else {
+        // Disappear smoothly
         for (var i = 0; i < extraCards.length; i++) {
-          extraCards[i].style.display = "none";
+          extraCards[i].style.opacity = "0";
+          setTimeout(function (card) {
+            card.style.display = "none";
+          }, 400, extraCards[i]);
         }
-        button.innerHTML = "View More";
+        setTimeout(function () {
+          button.innerHTML = "View More";
+        }, 300);
         showAll = false;
       }
     }
   </script>
 </body>
-
 </html>
