@@ -1,5 +1,6 @@
 // Fetch & display wildlife (initial load only)
 function displayWildlife() {
+  $("#loadingIndicator").show();
   $.ajax({
     url: "https://jsonplaceholder.typicode.com/posts",
     method: "GET",
@@ -8,6 +9,7 @@ function displayWildlife() {
     success: function (data) {
       const wildlifeData = data.slice(0, 20); // load first 20 items
       handleResponse(wildlifeData);
+      $("#loadingIndicator").hide();
     },
     error: function (error) {
       console.error("Error fetching wildlife:", error);
@@ -136,61 +138,6 @@ function clearForm() {
   $("#createBtn").removeAttr("data-id").html("Create");
   $("#title").val("");
   $("#content").val("");
-}
-
-// Inline edit helpers
-function editTitle(id) {
-  $(`#title-${id}`).hide();
-  $(`#title-form-${id}`).show().find("input").focus();
-}
-
-function editContent(id) {
-  $(`#content-${id}`).hide();
-  $(`#content-form-${id}`).show().find("input").focus();
-}
-
-function saveTitle(id) {
-  const newTitle = $(`#title-form-${id} input`).val();
-
-  $(`#title-${id}`).text(newTitle).show();
-  $(`#title-form-${id}`).hide();
-
-  $.ajax({
-    url: `https://jsonplaceholder.typicode.com/posts/${id}`,
-    method: "PUT",
-    data: JSON.stringify({ id, title: newTitle, userId: 1 }),
-    contentType: "application/json",
-    success: function () {
-      console.log("Title updated (simulated on API)");
-    },
-  });
-}
-
-function saveContent(id) {
-  const newContent = $(`#content-form-${id} input`).val();
-
-  $(`#content-${id}`).text(newContent).show();
-  $(`#content-form-${id}`).hide();
-
-  $.ajax({
-    url: `https://jsonplaceholder.typicode.com/posts/${id}`,
-    method: "PUT",
-    data: JSON.stringify({ id, body: newContent, userId: 1 }),
-    contentType: "application/json",
-    success: function () {
-      console.log("Content updated (simulated on API)");
-    },
-  });
-}
-
-function handleKeyPress(event, id, type) {
-  if (event.key === "Enter") {
-    if (type === "title") saveTitle(id);
-    if (type === "content") saveContent(id);
-  } else if (event.key === "Escape") {
-    $(`#${type}-${id}`).show();
-    $(`#${type}-form-${id}`).hide();
-  }
 }
 
 // Initialize everything
