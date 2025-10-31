@@ -330,6 +330,7 @@
         e.preventDefault();
         let valid = true;
 
+
         const validate = (id, condition) => {
           const el = $(id);
           if (!condition) { el.addClass('is-invalid'); valid = false; }
@@ -343,6 +344,7 @@
         validate('#postal', /^\d{4,6}$/.test($('#postal').val().trim()));
         validate('#country', $('#country').val() !== '');
 
+        
         const pay = $('input[name="pay"]:checked').val();
         if (!pay) { $('#paymentError').removeClass('d-none'); valid = false; }
 
@@ -350,9 +352,9 @@
           validate('#cardName', $('#cardName').val().trim() !== '');
           validate('#cardNumber', /^\d{13,19}$/.test($('#cardNumber').val().replace(/\s+/g, '')));
         }
-
+        //If we don't check at last we don't proceed to submission
         if (!$('#terms').is(':checked')) { $('#terms').addClass('is-invalid'); valid = false; }
-
+        //If everything is according to validation we give succes alert to user and clear all exisiting fields 
         if (valid) {
           alert('✅ Order placed successfully!');
           this.reset();

@@ -16,7 +16,7 @@
     }
 
     .hero-section {
-      background-image: url('BG1.jpg');
+      background-image: url('assets/BG1.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -97,7 +97,7 @@
 
     /* Second Section */
     .hero-section.second {
-      background-image: url('BG2.jpg');
+      background-image: url('assets/BG2.jpg');
       padding: 40px 60px;
       text-align: center;
     }
@@ -142,7 +142,7 @@
 
     /* Third Section */
     .hero-section.third {
-      background-image: url('BG4.jpg');
+      background-image: url('assets/BG4.jpg');
       padding: 40px 20px;
       text-align: center;
       color: #ffffff;
@@ -248,7 +248,7 @@
 
     /* Fourth Section - List of Tours */
     .hero-section.fourth {
-      background-image: url('BG5.jpg');
+      background-image: url('assets/BG5.jpg');
       padding: 40px 20px;
       text-align: center;
       color: #ffffff;
@@ -316,7 +316,7 @@
 
     /* Fifth Section - Contact */
     .hero-section.fifth {
-      background-image: url('BG6.jpg');
+      background-image: url('assets/BG6.jpg');
       padding: 40px 20px 60px 20px;
       text-align: center;
       color: #ffffff;
@@ -350,13 +350,10 @@
       margin: 0 auto 10px auto;
     }
 
-    /* ✅ Make all inputs and textarea full width and consistent */
     .contact-input,
     .contact-textarea {
       width: 100%;
-      /* full width inside the grid */
       box-sizing: border-box;
-      /* prevents padding from affecting size */
       padding: 14px 16px;
       border-radius: 4px;
       border: 1px solid rgba(255, 255, 255, 0.6);
@@ -371,7 +368,6 @@
       resize: vertical;
     }
 
-    /* ✅ Make single-column rows still match perfectly */
     .contact-row.full {
       grid-template-columns: 1fr;
     }
@@ -394,6 +390,84 @@
       margin-top: 18px;
       font-size: 12px;
       opacity: 0.85;
+    }
+
+    /* Testimonials Section */
+    .hero-section.testimonials {
+      background-image: url('assets/BG3.jpg');
+      padding: 40px 20px 60px 20px;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .testimonials h2 {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .testimonials .accent {
+      width: 80px;
+      height: 6px;
+      background: turquoise;
+      margin: 14px auto 30px;
+      border-radius: 3px;
+    }
+
+    .testimonials-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      padding: 20px;
+      width: 280px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .stars {
+      color: #00ffc6;
+      font-size: 20px;
+      margin: 8px 0;
+    }
+
+    .review-text {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.5;
+    }
+
+    .view-more-btn {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background: #00ffc6;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #063b35;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Responsive */
+    @media(max-width: 800px) {
+      .testimonials-container {
+        flex-direction: column;
+        align-items: center;
+      }
     }
 
 
@@ -437,7 +511,7 @@
   <div class="hero-section" id="section1">
     <header class="menu-wrapper">
       <div class="logo">
-        <img src="safarilogo.png" alt="SAFARI" style="max-height: 32px;">
+        <img src="assets/safarilogo.png" alt="SAFARI" style="max-height: 32px;">
       </div>
       <nav>
         <ul class="nav-list">
@@ -452,7 +526,7 @@
       </nav>
     </header>
 
-    <img class="image-square" src="square.png" width="30" height="30" alt="square">
+    <img class="image-square" src="assets/square.png" width="30" height="30" alt="square">
 
     <div class="welcome">
       <h1>Hi! Welcome</h1>
@@ -467,21 +541,21 @@
 
     <div class="columns">
       <div class="column">
-        <img src="egypt.png" alt="Place 1">
+        <img src="assets/egypt.png" alt="Place 1">
         <h2>EGYPT</h2>
         <p>Vestibulum ac posuere mi, ac tristique massa. Donec laoreet libero velit, eu tincidunt augue tristique
           lobortis. Pellentesque eget commodo nisi, vel massa nunc.</p>
       </div>
 
       <div class="column">
-        <img src="congo.png" alt="Place 2">
+        <img src="assets/congo.png" alt="Place 2">
         <h2>CONGO BASIN</h2>
         <p>Integer maximus porttitor viverra. Curabitur in sapien sed augue pellentesque placerat et et massa. Nulla
           quis egestas felis, maximus pulvinar massa massa nunc.</p>
       </div>
 
       <div class="column">
-        <img src="sahara.png" alt="Place 3">
+        <img src="assets/sahara.png" alt="Place 3">
         <h2>SAHARA</h2>
         <p>Phasellus porta gravida ultrices. Ut ultrices, felis vitae mattis tincidunt, mauris nisl placerat enim, ut
           facilisis lacus ligula eget ante. Pellentesque metus.</p>
@@ -560,6 +634,7 @@
     <div class="scroll-arrow" onclick="scrollToSection('section5')">&#x25BC;</div>
   </div>
 
+
   <!-- Fifth Section - Contact -->
   <div class="hero-section fifth" id="section5">
     <h2>CONTACT US</h2>
@@ -584,11 +659,82 @@
       <div class="contact-copy">© 2016 BeSafari – BeTheme. All Rights Reserved. Muffin group</div>
     </div>
   </div>
+  <!-- Testimonials Section -->
+  <div class="hero-section testimonials" id="section6">
+    <h2>CUSTOMER TESTIMONIALS</h2>
+    <div class="accent"></div>
+
+    <div class="testimonials-container">
+      <!-- Testimonial 1 -->
+      <div class="testimonial-card">
+        <h3>M Hamza</h3>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">I have got one thing to say it was PERFECT!</p>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="testimonial-card">
+        <h3>M Hurair</h3>
+        <div class="stars">★★★★☆</div>
+        <p class="review-text">I recommend you all to visit this at least once in a lifetime</p>
+      </div>
+
+      <!-- Hidden Testimonials -->
+      <div class="testimonial-card hidden">
+        <h3>M Wasif</h3>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">Everything was up to the mark and nothing matched its beauty.</p>
+      </div>
+
+      <div class="testimonial-card hidden">
+        <h3>M Hassan</h3>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">A must-visit place if you are with your family and children.</p>
+      </div>
+
+      <div class="testimonial-card hidden">
+        <h3>M Ahmad</h3>
+        <div class="stars">★★★☆☆</div>
+        <p class="review-text">It was fine until a staff member misbehaved but still recommended.</p>
+      </div>
+
+      <div class="testimonial-card hidden">
+        <h3>M Ubaid</h3>
+        <div class="stars">★★★★☆</div>
+        <p class="review-text">The Congo Basin was breath-taking and the best view I’ve ever seen.</p>
+      </div>
+    </div>
+
+    <button class="view-more-btn" onclick="toggleTestimonials()">View More</button>
+  </div>
   <script>
     function scrollToSection(id) {
       const nextSection = document.getElementById(id);
       if (nextSection) {
         nextSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+
+
+    var showAll = false;
+
+    function toggleTestimonials() {
+      var extraCards = document.getElementsByClassName("hidden");
+      var button = document.querySelector(".view-more-btn");
+
+      if (showAll == false) {
+        for (var i = 0; i < extraCards.length; i++) {
+          extraCards[i].style.display = "block";
+        }
+        button.innerHTML = "View Less";
+        showAll = true;
+      }
+      else {
+        for (var i = 0; i < extraCards.length; i++) {
+          extraCards[i].style.display = "none";
+        }
+        button.innerHTML = "View More";
+        showAll = false;
       }
     }
   </script>
