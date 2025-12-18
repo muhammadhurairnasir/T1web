@@ -15,6 +15,9 @@ router.get("/checkout", (req, res) => {
 router.get("/order-success", (req, res) => {
   res.render("order-success");
 });
-
+// Wild-life page
+router.get("/wildlife", (req, res) => {
+  res.render("wildlife");
+});
 module.exports = router;
 

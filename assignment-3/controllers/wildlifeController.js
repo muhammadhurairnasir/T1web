@@ -83,6 +83,35 @@ exports.create = async (req, res) => {
   }
 };
 
+// Update existing product
+exports.update = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, price, category, image, description } = req.body;
+
+    const updateData = {};
+    if (name) updateData.name = name;
+    if (price !== undefined) updateData.price = parseFloat(price);
+    if (category) updateData.category = category;
+    if (image) updateData.image = image;
+    if (description) updateData.description = description;
+
+    const numericId = parseInt(id);
+    const updated =
+      (await Product.findOneAndUpdate({ id: numericId }, updateData, { new: true })) ||
+      (await Product.findByIdAndUpdate(id, updateData, { new: true }));
+
+    if (!updated) {
+      return res.status(404).redirect("/wildlife?error=Product not found");
+    }
+
+    res.redirect("/wildlife");
+  } catch (error) {
+    console.error("Error updating product:", error);
+    res.status(500).redirect("/wildlife?error=Failed to update product");
+  }
+};
+
 // Delete product
 exports.delete = async (req, res) => {
   try {
@@ -123,6 +152,35 @@ exports.getByIdJSON = async (req, res) => {
   } catch (error) {
     console.error("Error fetching product:", error);
     res.status(500).json({ error: "Error loading product" });
+  }
+};
+
+// Update product (API)
+exports.updateJSON = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, price, category, image, description } = req.body;
+
+    const updateData = {};
+    if (name) updateData.name = name;
+    if (price !== undefined) updateData.price = parseFloat(price);
+    if (category) updateData.category = category;
+    if (image) updateData.image = image;
+    if (description) updateData.description = description;
+
+    const numericId = parseInt(id);
+    const updated =
+      (await Product.findOneAndUpdate({ id: numericId }, updateData, { new: true })) ||
+      (await Product.findByIdAndUpdate(id, updateData, { new: true }));
+
+    if (!updated) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+
+    res.json(updated);
+  } catch (error) {
+    console.error("Error updating product:", error);
+    res.status(500).json({ error: "Failed to update product" });
   }
 };
 

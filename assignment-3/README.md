@@ -1,67 +1,54 @@
-# Assignment 3 - MongoDB Integration
+# BESAFARI - E-commerce Website
 
-Express.js e-commerce with MongoDB, pagination, and filtering.
+Express.js application with MongoDB for product management.
 
-## Requirements Completed
+## Project Structure
 
-✅ Connect Express to MongoDB using Mongoose  
-✅ Create Product model (name, price, category, image, description)  
-✅ Insert sample product data  
-✅ Display products from MongoDB  
-✅ Implement pagination (page=1, limit=10)  
-✅ Add filtering (category, price range)  
+This project is divided into two separate folders:
+
+### 📁 Lab Task 3 (`lab-task-3/`)
+**Basic Express.js with EJS templates (NO MongoDB)**
+- Convert HTML/CSS to Express.js
+- EJS template system
+- Routes and views
+- Partials
+
+**Port:** 3000
+
+### 📁 Assignment 3 (`assignment-3/`)
+**Full app with MongoDB integration**
+- Everything from Lab Task 3 PLUS:
+- MongoDB connection
+- Product model
+- Pagination
+- Filtering (category, price)
+- Sample data
+
+**Port:** 3001
 
 ## Quick Start
 
-### 1. Install Dependencies
+### Lab Task 3
 ```bash
+cd lab-task-3
 npm install
-```
-
-### 2. Create `.env` File
-```
-MONGO_URI=mongodb://localhost:27017/besafari
-PORT=3001
-```
-
-### 3. Add Sample Data
-```bash
-npm run seed
-```
-
-### 4. Start Server
-```bash
 npm run dev
 ```
+Open `http://localhost:3000`
 
+### Assignment 3
+```bash
+cd assignment-3
+npm install
+# Create .env file with MONGO_URI
+npm run seed
+npm run dev
+```
 Open `http://localhost:3001`
 
-## Pages
+## Requirements
 
-- `/` - Homepage
-- `/wildlife` - Products page (with pagination & filters)
-- `/checkout` - Checkout page
-- `/order-success` - Order confirmation
+- Node.js (v14+)
+- MongoDB (for Assignment 3 only)
 
-## Features
-
-- View products from MongoDB
-- Pagination (10 per page)
-- Filter by category
-- Filter by price range
-- Add/Delete products
-
-## Structure
-
-```
-assignment-3/
-├── config/          - MongoDB connection
-├── controllers/     - Product operations
-├── models/          - Product & Counter models
-├── routes/          - URL routes
-├── views/           - EJS templates
-├── public/          - CSS, images, JS
-├── scripts/         - Sample data seeder
-└── server.js        - Express server
-```
-
+See individual README files in each folder for detailed instructions.
