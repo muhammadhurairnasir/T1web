@@ -38,6 +38,12 @@ exports.confirm = async (req, res) => {
       orderData.discount = { code: discount.code, percent: discount.percent, amount: discount.amount };
     }
 
+    // Capture customer email from form (for order history lookup)
+    const email = req.body && req.body.email ? String(req.body.email).trim() : null;
+    if (email) {
+      orderData.customerEmail = email;
+    }
+
     const order = new Order(orderData);
     await order.save();
 
@@ -61,5 +67,31 @@ exports.success = async (req, res) => {
   } catch (err) {
     console.error('Error loading order:', err);
     res.status(500).send('Failed to load order');
+  }
+};
+
+// Show form to ask for customer email (GET /my-orders)
+exports.myOrdersForm = (req, res) => {
+  res.render('my-orders-form');
+};
+
+// Search orders by customer email (POST /my-orders)
+exports.myOrdersSearch = async (req, res) => {
+  try {
+    const email = req.body && req.body.email ? String(req.body.email).trim().toLowerCase() : null;
+    if (!email) {
+      return res.render('my-orders-form', { error: 'Please enter an email address.' });
+    }
+
+    // Find all orders matching the customer email (case-insensitive regex)
+    const orders = await Order.find({ customerEmail: { $regex: email, $options: 'i' } })
+      .sort({ createdAt: -1 })
+      .lean();
+
+    // Render results page
+    res.render('my-orders-list', { email, orders });
+  } catch (err) {
+    console.error('Error searching orders:', err);
+    res.render('my-orders-form', { error: 'Failed to search orders. Please try again.' });
   }
 };

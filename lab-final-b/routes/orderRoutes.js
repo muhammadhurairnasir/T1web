@@ -12,4 +12,8 @@ router.post('/confirm', applyDiscount, orderController.confirm);
 // Success / summary
 router.get('/success/:id', orderController.success);
 
+// My Orders: show email form (GET) and search results (POST)
+router.get('/my-orders', orderController.myOrdersForm);
+router.post('/my-orders', orderController.myOrdersSearch);
+
 module.exports = router;

@@ -52,6 +52,11 @@
       <div class="d-flex justify-content-between">
         <a href="/cart" class="btn btn-secondary">Go Back to Cart</a>
         <form method="POST" action="/order/confirm">
+          <!-- Customer email (optional but useful for order history lookup) -->
+          <div class="mb-2">
+            <label class="form-label">Email (to retrieve your orders later):</label>
+            <input type="email" name="email" class="form-control" placeholder="your@email.com" required>
+          </div>
           <% if (typeof discount !== 'undefined' && discount && discount.applied) { %>
             <input type="hidden" name="coupon" value="<%= discount.code %>">
           <% } %>

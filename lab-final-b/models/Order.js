@@ -17,6 +17,8 @@ const orderSchema = new mongoose.Schema({
     percent: { type: Number },
     amount: { type: Number }
   },
+  // Customer email is stored so users can look up their orders
+  customerEmail: { type: String, trim: true },
   status: { type: String, default: 'Placed' },
   customer: { type: Object, default: null }
 }, { timestamps: true });
