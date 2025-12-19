@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Order Preview</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body>
+    <div class="container py-5">
+      <h1>Order Preview</h1>
+      <p class="text-muted">Review items and confirm your order.</p>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Line Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (const k of Object.keys(cart.items)) { const it = cart.items[k]; %>
+            <tr>
+              <td class="align-middle">
+                <img src="<%= it.product.image %>" style="width:80px;height:80px;object-fit:cover;margin-right:8px;" alt="">
+                <%= it.product.name %>
+              </td>
+              <td class="align-middle">$<%= it.product.price.toFixed(2) %></td>
+              <td class="align-middle"><%= it.qty %></td>
+              <td class="align-middle">$<%= it.lineTotal.toFixed(2) %></td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+
+      <div class="d-flex justify-content-end mb-4">
+        <div class="me-3"><strong>Grand Total:</strong></div>
+        <div>
+          <% if (typeof discount !== 'undefined' && discount && discount.applied) { %>
+            <div>Original: $<%= cart.totalPrice.toFixed(2) %></div>
+            <div class="text-success">Discount (<%= discount.code %>): -$<%= discount.amount.toFixed(2) %> (<%= discount.percent %>%)</div>
+            <div><strong>$<%= discount.discountedTotal.toFixed(2) %></strong></div>
+          <% } else { %>
+            <div><strong>$<%= cart.totalPrice.toFixed(2) %></strong></div>
+          <% } %>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <a href="/cart" class="btn btn-secondary">Go Back to Cart</a>
+        <form method="POST" action="/order/confirm">
+          <% if (typeof discount !== 'undefined' && discount && discount.applied) { %>
+            <input type="hidden" name="coupon" value="<%= discount.code %>">
+          <% } %>
+          <button class="btn btn-primary">Confirm Order</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Your Cart - BESAFARI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body>
+    <div class="container py-5">
+      <h1>Your Cart</h1>
+      <p class="text-muted">Items: <strong><%= cart.totalQty %></strong></p>
+
+      <% if (!cart || Object.keys(cart.items).length === 0) { %>
+        <div class="alert alert-info">Your cart is empty. Browse <a href="/wildlife">products</a>.</div>
+      <% } else { %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Qty</th>
+              <th>Line</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for (const k of Object.keys(cart.items)) { const it = cart.items[k]; %>
+              <tr>
+                <td class="align-middle">
+                  <img src="<%= it.product.image %>" style="width:80px;height:80px;object-fit:cover;margin-right:8px;" alt="">
+                  <%= it.product.name %>
+                </td>
+                <td class="align-middle">$<%= it.product.price.toFixed(2) %></td>
+                <td class="align-middle">
+                  <form method="POST" action="/cart/update" class="d-inline-block">
+                    <input type="hidden" name="productId" value="<%= k %>">
+                    <input type="number" name="qty" value="<%= it.qty %>" min="0" style="width:90px;" class="form-control d-inline-block">
+                    <button class="btn btn-sm btn-primary mt-1">Update</button>
+                  </form>
+                </td>
+                <td class="align-middle">$<%= it.lineTotal.toFixed(2) %></td>
+                <td class="align-middle">
+                  <form method="POST" action="/cart/remove">
+                    <input type="hidden" name="productId" value="<%= k %>">
+                    <button class="btn btn-sm btn-danger">Remove</button>
+                  </form>
+                </td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+
+        <div class="d-flex justify-content-end align-items-center">
+          <div class="me-4"><strong>Total:</strong> $<%= cart.totalPrice.toFixed(2) %></div>
+          <form method="POST" action="/cart/clear" class="me-2">
+            <button class="btn btn-outline-secondary">Clear Cart</button>
+          </form>
+
+          <!-- Coupon input: user may enter coupon and proceed to preview as GET so middleware applies -->
+          <form method="GET" action="/order/preview" class="d-flex align-items-center me-2">
+            <input type="text" name="coupon" placeholder="Coupon code" class="form-control form-control-sm" style="width:160px;" />
+            <button class="btn btn-success btn-sm ms-2">Preview Order</button>
+          </form>
+
+          <!-- fallback direct preview link (no coupon) -->
+          <a href="/order/preview" class="btn btn-success">Proceed to Order Preview</a>
+        </div>
+      <% } %>
+    </div>
+  </body>
+</html>
