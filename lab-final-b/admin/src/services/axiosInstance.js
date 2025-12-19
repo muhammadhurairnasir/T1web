@@ -1,6 +1,6 @@
 import axios from "axios";
 let axiosInstance = axios.create({
-  // baseURL: process.env.REACT_APP_BASE_URL,
+  baseURL: process.env.REACT_APP_BASE_URL || "http://localhost:3001",
   // withCredentials: true,
   headers: {
     "Access-Control-Allow-Origin": "*",

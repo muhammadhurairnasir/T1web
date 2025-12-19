@@ -14,6 +14,8 @@ import MenuColorChanger from "./components/redux-examples/MenuColorChanger";
 import ReduxThunkExample from "./components/redux-examples/ReduxThunkExample";
 import Dashboard from "./components/views/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
+import OrderList from "./components/views/OrderList";
+import OrderStats from "./components/views/OrderStats";
 function App() {
   return (
     <div className="App">
@@ -32,6 +34,8 @@ function App() {
                 path="/products/details/:id"
                 element={<ProtectedRoute element={<ProductDetails />} />}
               />
+              <Route path="/orders" element={<ProtectedRoute element={<OrderList />} />} />
+              <Route path="/orders/stats" element={<ProtectedRoute element={<OrderStats />} />} />
               <Route
                 path="/redux-thunk-example"
                 element={<ProtectedRoute element={<ReduxThunkExample />} />}

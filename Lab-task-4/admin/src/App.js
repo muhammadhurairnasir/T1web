@@ -12,6 +12,8 @@ import store from "./store";
 import NavBar from "./components/layout/NavBar";
 import MenuColorChanger from "./components/redux-examples/MenuColorChanger";
 import ReduxThunkExample from "./components/redux-examples/ReduxThunkExample";
+import Dashboard from "./components/views/Dashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
 function App() {
   return (
     <div className="App">
@@ -20,20 +22,21 @@ function App() {
           <NavBar />
           <Container maxWidth="lg">
             <Routes>
-              <Route
-                path="/redux-thunk-example"
-                element={<ReduxThunkExample />}
-              />
-              <Route path="/redux-example" element={<MenuColorChanger />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
-              <Route path="/products/create" element={<ProductForm />} />
-              <Route path="/products/edit/:id" element={<ProductForm />} />
+              <Route path="/" element={<ProtectedRoute element={<Dashboard />} />} />
+              <Route path="/products" element={<ProtectedRoute element={<Products />} />} />
+              <Route path="/products/create" element={<ProtectedRoute element={<ProductForm />} />} />
+              <Route path="/products/edit/:id" element={<ProtectedRoute element={<ProductForm />} />} />
               <Route
                 path="/products/details/:id"
-                element={<ProductDetails />}
+                element={<ProtectedRoute element={<ProductDetails />} />}
               />
-              <Route path="/" element={<Products />} />
+              <Route
+                path="/redux-thunk-example"
+                element={<ProtectedRoute element={<ReduxThunkExample />} />}
+              />
+              <Route path="/redux-example" element={<ProtectedRoute element={<MenuColorChanger />} />} />
             </Routes>
           </Container>
         </Router>

@@ -8,6 +8,8 @@ const authRoutes = require("./routes/authRoutes");
 // order routes will be mounted below (added in this change)
 const orderRoutes = require("./routes/orderRoutes");
 const cartRoutes = require("./routes/cartRoutes");
+// Admin routes for order management (React dashboard integration)
+const adminRoutes = require("./routes/adminRoutes");
 
 const app = express();
 
@@ -63,6 +65,9 @@ app.use((req, res, next) => {
 // ============================================
 app.use("/api/products", productApiRouter);
 app.use("/api/auth", authRoutes);
+
+// Admin routes (order management - React dashboard)
+app.use("/api/admin", adminRoutes);
 
 // Order routes (preview / confirm / success)
 app.use("/order", orderRoutes);
